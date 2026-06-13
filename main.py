@@ -1,3 +1,7 @@
+ 
+
+
+
 # from fastapi import FastAPI, Header
 # from pydantic import BaseModel
 
@@ -55,26 +59,26 @@
 #         type: str
 #         number: int
 
-from fastapi import FastAPI, status
-from pydantic import BaseModel
-from typing import List
+# from fastapi import FastAPI, status
+# from pydantic import BaseModel
+# from typing import List
 
-app = FastAPI()
+# app = FastAPI()
 
-class database(BaseModel):
-        name : str
-        number : int
-        address : str
+# class database(BaseModel):
+#         name : str
+#         number : int
+#         address : str
         
 
-@app.get('/contacts',response_model= List[database])
-async def getting_contacts():
-        return database#not this something else
+# @app.get('/contacts',response_model= List[database])
+# async def getting_contacts():
+#         return database#not this something else
 
-@app.post('/create',status_code=status.HTTP_201_CREATED)
-async def creating_a_newline(data:database) -> 
-        pass
+# @app.post('/create',status_code=status.HTTP_201_CREATED)
+# async def creating_a_newline(data:database) -> 
+#         pass
 
-@app.patch('/gettingbooks{book_id}')
-async def updatingbooks(book_id : int, ):
-        pass
+# @app.patch('/gettingbooks{book_id}')
+# async def updatingbooks(book_id : int, ):
+#         pass
