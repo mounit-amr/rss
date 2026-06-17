@@ -5,3 +5,6 @@ from database import get_connection
 from config import CACHE_TIME
 
 router = APIRouter()
+
+@router.get("/news")
+async def getnews(backgroundtask: BackgroundTasks)
