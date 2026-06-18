@@ -1,9 +1,9 @@
 from datetime import datetime, timedelta
 from fastapi import APIRouter, BackgroundTasks
 
-from app.database import get_connection
-from app.scraper import scrape_rss, cache
-from app.config import CACHE_TTL
+from database import get_connection
+from scraper import scraperss, cache
+from config import CACHE_TIME
 
 
 # APIRouter = a "mini FastAPI app" you can plug into the main app
@@ -15,7 +15,7 @@ async def get_news(background_tasks: BackgroundTasks):
     now = datetime.utcnow()
 
     # Always kick off a fresh scrape in the background
-    background_tasks.add_task(scrape_rss)
+    background_tasks.add_task(scraperss)
 
     # CACHE HIT
     if cache["data"] is not None and cache["expires_at"] > now:
@@ -40,7 +40,7 @@ async def get_news(background_tasks: BackgroundTasks):
     ]
 
     cache["data"] = articles
-    cache["expires_at"] = now + timedelta(seconds=CACHE_TTL)
+    cache["expires_at"] = now + timedelta(seconds=CACHE_TIME)
 
     return {
         "source": "database",
