@@ -1,4 +1,30 @@
- 
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from database import setupdb
+from routes.news import router as news_router
+
+
+app = FastAPI(title="RSS Aggregator")
+
+# Allow frontend (different port/origin) to call this API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Run DB setup once when the app starts
+setupdb()
+
+# Plug in the /news endpoint
+app.include_router(news_router)
+
+
+@app.get("/")
+def root():
+    return {"status": "RSS Aggregator running"}
 
 
 
