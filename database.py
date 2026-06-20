@@ -2,7 +2,7 @@ import sqlite3
 from config import DB_NAME
 
 def get_connection():
-    return sqlite3.connect(DB_NAME)    #opens the db file and returns a connection object
+    return sqlite3.connect(DB_NAME)    #opens the db file and returns a connection object review
 
 def setupdb():
     conn = get_connection()
