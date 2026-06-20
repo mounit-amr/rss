@@ -1,0 +1,4 @@
+venv/
+__pyache__/
+*.pyc 
+news.db  #problem
